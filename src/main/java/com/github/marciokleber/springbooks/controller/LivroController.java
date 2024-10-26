@@ -3,6 +3,7 @@ package com.github.marciokleber.springbooks.controller;
 
 import com.github.marciokleber.springbooks.domain.entities.Livro;
 import com.github.marciokleber.springbooks.repository.LivroRepository;
+import com.github.marciokleber.springbooks.repository.specification.LivroSpecification;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -22,6 +23,11 @@ public class LivroController {
     @GetMapping
     public ResponseEntity<List<Livro>> findAll() {
         return ResponseEntity.status(HttpStatus.OK).body(livroRepository.findAll());
+    }
+
+    @GetMapping("/status/{status}")
+    public ResponseEntity<List<Livro>> findByStatus(@PathVariable String status) {
+        return ResponseEntity.status(HttpStatus.OK).body(livroRepository.findAll(LivroSpecification.byStatus(status)));
     }
 
     @GetMapping("/{id}")

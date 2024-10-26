@@ -1,5 +1,6 @@
 package com.github.marciokleber.springbooks.domain.entities;
 
+import com.github.marciokleber.springbooks.domain.enums.Status;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
@@ -28,6 +29,10 @@ public class Livro {
     @Column(nullable = false)
     @Comments(@Comment("AUTOR DO LIVRO"))
     private String autor;
+
+    @Enumerated(EnumType.STRING)
+    @Comments(@Comment("STATUS DO LIVRO"))
+    private Status status = Status.DISPONIVEL;
 
     @Comments(@Comment("INTERNATION STANDARD BOOK NUMBER"))
     private String isbn;
