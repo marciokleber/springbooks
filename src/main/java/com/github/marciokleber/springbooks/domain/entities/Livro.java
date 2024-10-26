@@ -16,7 +16,7 @@ public class Livro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_LIVRO")
-    @SequenceGenerator(name = "SEQ_LIVRO", sequenceName = "SEQ_LIVRO", initialValue = 1)
+    @SequenceGenerator(name = "SEQ_LIVRO", sequenceName = "SEQ_LIVRO")
     private Long id;
 
     @NotBlank
